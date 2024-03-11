@@ -69,7 +69,7 @@ app.component(
         data(){
             return{
                 product: 'Mobile 2G',
-                brand: "Nokia",
+                brand: "Phone",
                 details: ['RAM 1 GB','ROM 5 GB','Screen 3 inch','Battery 2000mAH'],
                 variants:[
                     {id: 101, color:'red', image: '../assets/images/red.png',quantity: 20},
