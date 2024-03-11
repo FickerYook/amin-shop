@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- import style sheet -->
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- import vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+
+        <div class="nav-bar">
+            <i class="fa-solid fa-cart-shopping">
+                <div class="icard"> {{cart}}</div>
+            </i>
+            <!-- <div class="cart">จำนวนสินค้า {{cart}} ชิ้น</div> -->
+        </div>
+<!-- product -->
+
+        <div class="product-display">
+            <div class="product-container">
+                <div class="product-image">
+                    <img :src="image">
+                </div>
+
+
+                <div class="product-info">
+                    <h1>{{title}}</h1>
+                    <h2>{{sale}}</h2>
+                    <!-- <h1>{{product}}</h1> -->   
+                    <p v-if="Stock">สินค้ามีในร้าน</p>
+                    <!-- <p v-if="Stock> 50">สินค้ามีในร้าน</p> -->
+                    <!-- <p v-else-if="Stock <=50 && Stock > 0 ">สินค้าเหลือน้อย</p> -->
+                    <p v-else=>สินค้าหมด</p>
+                    <!-- <p v-if="onSale">ลดราคา</p> -->
+                    <hr>
+                    <h3>รายละเอียด</h3>
+                    <ul>
+                        <li v-for="det in details">{{det}}</li>
+                    </ul>
+<br>
+<hr>
+
+<!-- color -->
+                    <div class="cart-color">
+                    <div v-for="vari in variants" 
+                    :key="vari.id" 
+                    @mouseover="updateImage(vari.image)" 
+                    class="color-circle"
+                    :style="{backgroundColor: vari.color}"
+                    >
+
+                        <!-- {{vari.color}} -->
+                    </div>
+                </div>
+
+ <!-- button -->
+                    <button class="button"  @click="addToCart" :class="{disableButton: !Stock}"  :disabled="!Stock"  >Add to Cart</button>
+
+
+                    <button class="button" @click="removeCart">Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+  
+    </div>
+    <!-- import javascrip -->
+    <script src="./main.js"></script>
+    <!-- Mounted Vue App  -->
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
+</body>
+
+</html>

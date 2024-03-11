@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Shop</title>
+
+    <link rel="stylesheet" href="./assets/style.css">
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+<body>
+
+    <div id="app">
+        <div class="nav-bar"></div>
+
+        <div class="cart"> จำนวณสินค้า {{ cart.length }} ชิ้น </div>
+            <product-display 
+                :premium="premium"
+                @add-to-cart="updateCart"
+                @remove-from-cart="removeCart"
+                >
+            </product-display>
+        <div class="footer"></div>
+    </div>
+
+    <!-- import javascript -->
+    <script src="main.js"></script>
+    <!-- Import Component -->
+    <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ProductDetail.js"></script>
+    <script src="./components/ProductReview.js"></script>
+    <script src="./components/ReviewList.js"></script>
+
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
+    
+</body>
+</html>

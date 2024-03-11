@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Shop</title>
+    <!-- import style sheet -->
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- import vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="nav-bar">
+            <div class="cart">{{cart}}</div>
+        </div>
+
+        <div class="product-display">
+            <div class="product-container">
+                <div class="product-image">
+                    <img :src="image">
+                </div>
+                <div class="product-info">
+                    <h1>{{product}}</h1>
+                    <p v-if="stock> 50">สินค้ามีในร้าน</p>
+                    <p v-else-if="stock <=50 && stock > 0 ">สินค้าเหลือน้อย</p>
+                    <p v-else=>สินค้าหมด</p>
+                    <p v-if="onSale">ลดราคา</p>
+<br>
+้<hr>
+                    <ul>
+                        <li v-for="det in details">{{det}}</li>
+                    </ul>
+<br>
+<hr>
+                    <div v-for="vari in variants" :key="vari.id" @mouseover="updateImage(vari.image)">
+                        {{vari.color}}
+                    </div>
+
+                    <button class="button" @click="addToCart">Add to Cart</button>
+                    <button class="button" @click="removeCart">Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- import javascrip -->
+    <script src="./main.js"></script>
+    <!-- Mounted Vue App  -->
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
+</body>
+
+</html>
